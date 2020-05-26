@@ -105,7 +105,7 @@ void appendData(ptrMyList pHead, Node data)
     sortByExp(pHead);
 }
 
-void combine(ptrMyList pFirst, ptrMyList pSecond)
+void combine(ptrMyList pFirst, ptrMyList pSecond, int isAdd)
 {
     ptrMyList pTemp1 = pFirst;
     ptrMyList pTemp2 = pSecond;
@@ -124,7 +124,11 @@ void combine(ptrMyList pFirst, ptrMyList pSecond)
         {
             if (pTemp2->pNext->data.exp == pTemp1->pNext->data.exp)
             {
-                pTemp1->pNext->data.cof += pTemp2->pNext->data.cof;
+                if (isAdd == 1)
+                    pTemp1->pNext->data.cof += pTemp2->pNext->data.cof;
+                else
+                    pTemp1->pNext->data.cof -= pTemp2->pNext->data.cof;
+
                 if (pTemp1->pNext->data.cof == 0)
                 {
                     free(pTemp1->pNext);
@@ -172,7 +176,7 @@ int main()
     printList(pHead2);
 
     printf("\n\n函数一 函数二 合并:\n");
-    combine(pHead1, pHead2);
+    combine(pHead1, pHead2, -1);
     printList(pHead1);
 
     return 0;
