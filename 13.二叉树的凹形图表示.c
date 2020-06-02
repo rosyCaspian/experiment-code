@@ -31,17 +31,6 @@ BinaryTree *addLeftChild(BinaryTree *pParent, char data)
     return pParent->pLeftChild;
 }
 
-BinaryTree *addRightChild(BinaryTree *pParent, char data)
-{
-    pParent->pRightChild = (BinaryTree *)malloc(sizeof(BinaryTree));
-    pParent->pRightChild->data = data;
-    pParent->pRightChild->pLeftChild = NULL;
-    pParent->pLeftChild->pMidChild = NULL;
-    pParent->pRightChild->pRightChild = NULL;
-
-    return pParent->pRightChild;
-}
-
 BinaryTree *addMidChild(BinaryTree *pParent, char data)
 {
     pParent->pMidChild = (BinaryTree *)malloc(sizeof(BinaryTree));
@@ -51,6 +40,17 @@ BinaryTree *addMidChild(BinaryTree *pParent, char data)
     pParent->pMidChild->pRightChild = NULL;
 
     return pParent->pMidChild;
+}
+
+BinaryTree *addRightChild(BinaryTree *pParent, char data)
+{
+    pParent->pRightChild = (BinaryTree *)malloc(sizeof(BinaryTree));
+    pParent->pRightChild->data = data;
+    pParent->pRightChild->pLeftChild = NULL;
+    pParent->pRightChild->pMidChild = NULL;
+    pParent->pRightChild->pRightChild = NULL;
+
+    return pParent->pRightChild;
 }
 
 void print(BinaryTree *pRoot, int nlayer)
